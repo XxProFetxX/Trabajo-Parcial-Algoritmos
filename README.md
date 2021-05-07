@@ -6,7 +6,7 @@ Integrantes:
 
 • Fuentes Ortiz, Omar U20181A993
 
-• Galarza Rosales, Pablo J.
+• Ramirez Zarate, Denilson Nider - U201824021
 
 ## Introducción
 El Problema del Traveling Salesman 
