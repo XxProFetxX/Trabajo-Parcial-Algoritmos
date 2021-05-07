@@ -55,4 +55,14 @@ Para esta solución utilizaremos el algoritmo de Prim para hallar árboles de ex
 	url="https://raw.githubusercontent.com/lmcanavals/algorithmic_complexity/main/data/poblaciones.csv"
 	poblacionesDF = pd.read_csv(url)
 ```
+Luego se creó un árbol que contenga tanto los pesos entre todos los nodos contra todos los nodos, como los centros poblados tanto de distritos como de provincias:
+```python 
+	G = nx.Graph()
+col = 'CENTRO POBLADO'
+
+for i, cp1 in pro.iterrows():
+  for j, cp2 in pro.iterrows():
+    if cp1[col] != cp2[col]:
+      G.add_edge(cp1[col], cp2[col], weight=dist(cp1, cp2))
+```
 
