@@ -104,4 +104,10 @@ Finalmente graficamos la solución:
 ```
 ![image](https://user-images.githubusercontent.com/67590524/117501477-b89e8c00-af43-11eb-8c28-d8bb4f70252b.png)
 
+# Conclusiones
+
+El algoritmo puede dar solución al Travel Salesman Problem (TSP) y su tiempo de ejecución del algoritmo es O(n^2 ), por lo que podemos concluir que las estrategias de solución para el problema, basadas en estrategias vistas en clase han sido de utilidad al hallar una solución para el problema.
+
+Para el presente trabajo se hizo uso de las estrategias vistas en clase, en este caso usamos la estrategia de búsqueda por expansión  y el uso de funciones. Así mismo, se concretó el desarrollo del algoritmo con una correcta funcionalidad.
+
 
