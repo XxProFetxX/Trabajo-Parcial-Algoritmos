@@ -58,11 +58,50 @@ Para esta solución utilizaremos el algoritmo de Prim para hallar árboles de ex
 Luego se creó un árbol que contenga tanto los pesos entre todos los nodos contra todos los nodos, como los centros poblados tanto de distritos como de provincias:
 ```python 
 	G = nx.Graph()
-col = 'CENTRO POBLADO'
+	col = 'CENTRO POBLADO'
 
-for i, cp1 in pro.iterrows():
-  for j, cp2 in pro.iterrows():
-    if cp1[col] != cp2[col]:
-      G.add_edge(cp1[col], cp2[col], weight=dist(cp1, cp2))
+	for i, cp1 in pro.iterrows():
+  		for j, cp2 in pro.iterrows():
+    			if cp1[col] != cp2[col]:
+      			G.add_edge(cp1[col], cp2[col], weight=dist(cp1, cp2))
 ```
+Posteriormente utilizamos la función PRIM, al cual enviamos  el árbol y el distrito inicial:
+```python 
+def PRIM(G, nombre):
+    for u in G.nodes:
+      G.nodes[u]['visited']= False
+      G.nodes[u]['path'] = ' '
+      G.nodes[u]['cost'] = -1.0
+
+    G.nodes[nombre]['cost'] = 0.0
+    cola = [(0,nombre)]
+    
+    menor = 0
+    while cola:
+      _, n = hq.heappop(cola)
+      if not G.nodes[n]['visited']:
+
+        G.nodes[n]['visited'] = True
+
+      for v in G.neighbors(n):
+
+        if not G.nodes[v]['visited']:
+          costo = G.edges[n, v]['weight']
+
+          if G.nodes[v]['cost'] != -1 and costo < G.nodes[v]['cost']:
+            G.nodes[v]['cost'] = costo      
+            G.nodes[v]['path'] = n   
+            hq.heappush(cola,(costo,v))  
+
+          elif G.nodes[v]['cost'] == -1:
+            G.nodes[v]['cost'] = costo 
+            G.nodes[v]['path'] = n
+            hq.heappush(cola,(costo,v)) 
+```
+Finalmente graficamos la solución:
+```python 
+	gs.nx2gv(PRIM(G,cpi), weighted=True, params={'size':'30'})
+```
+![image](https://user-images.githubusercontent.com/67590524/117501477-b89e8c00-af43-11eb-8c28-d8bb4f70252b.png)
+
 
